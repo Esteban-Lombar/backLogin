@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const dbInit = require('.src/config/db'); // Corrige esta ruta si es necesario
-const authRoutes = require('.src/routes/auth');
+const dbInit = require('./config/db'); // Revisa si la ruta es correcta
+const authRoutes = require('./routes/auth');
 const dotenv = require('dotenv');
 
 dotenv.config();
