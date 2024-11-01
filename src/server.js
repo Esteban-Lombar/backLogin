@@ -1,7 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const dbInit = require('./src/config/db'); // Asegúrate de tener la ruta correcta
-const authRoutes = require('./src/routes/auth'); // Asegúrate de tener la ruta correcta
+const dbInit = require('./config/db');
+const authRoutes = require('./routes/auth');
+const dotenv = require('dotenv');
+
+// Cargar variables de entorno desde el archivo .env
+dotenv.config();
 
 const app = express();
 
