@@ -15,7 +15,7 @@ app.use(express.json());
 dbInit();
 
 app.use('/auth', authRoutes);
-app.use('/routes/codigo', codigoRoutes); // Nueva línea para usar las rutas de códigos
+app.use('/codigo', codigoRoutes); // Cambiado a '/codigo' para que sea más sencillo de acceder
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
