@@ -1,30 +1,18 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const dbInit = require('./src/config/db'); // Asegúrate de tener la ruta correcta
+const authRoutes = require('./src/routes/auth'); // Asegúrate de tener la ruta correcta
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Conectar a MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('Conectado a MongoDB'))
-.catch(err => console.error(err));
+dbInit();
 
-// Rutas (Ejemplo)
-app.get('/', (req, res) => {
-    res.send('¡Hola desde el backend!');
-});
+app.use('/auth', authRoutes);
 
-// Iniciar el servidor
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en https://vercel.com/api/toolbar/link/back-login-six.vercel.app?via=project-dashboard-alias-list&p=1&page=/`);
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
-
